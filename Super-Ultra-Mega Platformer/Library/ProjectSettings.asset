@@ -4,14 +4,14 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  productGUID: 70ef177c592e26b4eb7fcf630c6674a9
+  productGUID: fec45a4b03c70704abae477f625041ed
   AndroidProfiler: 0
   defaultScreenOrientation: 4
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Super-Ultra-Mega Platformer
+  productName: Super-Ultra-Mega-Platformer
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13333334, g: 0.17254902, b: 0.21176471, a: 1}
@@ -387,14 +387,14 @@ PlayerSettings:
   additionalIl2CppArgs: 
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Super-Ultra-Mega Platformer
+  metroPackageName: Super-Ultra-Mega-Platformer
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Super-Ultra-Mega Platformer
+  metroApplicationDescription: Super-Ultra-Mega-Platformer
   wsaImages: {}
   metroTileShortName: 
   metroCommandLineArgsFile: 
