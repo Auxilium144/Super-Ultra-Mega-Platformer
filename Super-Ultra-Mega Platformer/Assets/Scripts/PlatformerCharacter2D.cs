@@ -19,7 +19,8 @@ namespace UnityStandardAssets._2D
         private Animator m_Anim;            // Reference to the player's animator component.
         private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
-
+        private int m_jumps = 0; //holds jump charges
+        //private bool m_doubleJumpEnable; //enables double jumps
         private void Awake()
         {
             // Setting up references.
@@ -49,7 +50,7 @@ namespace UnityStandardAssets._2D
         }
 
 
-        public void Move(float move, bool crouch, bool jump)
+        public void Move(float move, bool crouch, bool jump, bool doubleJump)
         {
             // If crouching, check to see if the character can stand up
             if (!crouch && m_Anim.GetBool("Crouch"))
@@ -96,6 +97,12 @@ namespace UnityStandardAssets._2D
                 m_Grounded = false;
                 m_Anim.SetBool("Ground", false);
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+                m_jumps = 1;
+            }
+            else if (!m_Grounded && (m_jumps > 0) && doubleJump) //&& !m_Anim.GetBool("Ground")
+            {
+                m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce/2));
+                m_jumps = m_jumps - 1;
             }
         }
 
