@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterMoveSlow : MonoBehaviour {
+public class DoubleJump : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4904796821824430}
   - component: {fileID: 212421959008536142}
   - component: {fileID: 61511788284472460}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stage-Wall1PROTO
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

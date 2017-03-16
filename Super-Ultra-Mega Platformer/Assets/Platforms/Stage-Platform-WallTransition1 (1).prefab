@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4707956453328920}
   - component: {fileID: 212892017888444180}
   - component: {fileID: 61596076214729954}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stage-Platform-WallTransition1 (1)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
