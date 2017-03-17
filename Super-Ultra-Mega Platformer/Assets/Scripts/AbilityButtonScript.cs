@@ -11,6 +11,9 @@ public class AbilityButtonScript : MonoBehaviour {
 	public Button ability2;
 	public Button ability3;
 	public Button ability4;
+	public Button ability5;
+	public Button ability6;
+	public Button ability7;
 	private int abilitiesCount;
 	private string[] abilities;
 	string path;
@@ -21,6 +24,10 @@ public class AbilityButtonScript : MonoBehaviour {
 		ability2 = ability2.GetComponent<Button> ();
 		ability3 = ability3.GetComponent<Button> ();
 		ability4 = ability4.GetComponent<Button> ();
+		ability5 = ability5.GetComponent<Button> ();
+		ability6 = ability6.GetComponent<Button> ();
+		ability7 = ability7.GetComponent<Button> ();
+		
 		abilitiesCount = 0;
 		abilities = new string[4];
 		path = Directory.GetCurrentDirectory();
@@ -48,6 +55,24 @@ public class AbilityButtonScript : MonoBehaviour {
 	{
 		abilityHandler("4");
 		ability4.enabled = false;
+	}
+	
+	public void ability5Press()
+	{
+		abilityHandler("5");
+		ability5.enabled = false;
+	}
+	
+	public void ability6Press()
+	{
+		abilityHandler("6");
+		ability6.enabled = false;
+	}
+	
+	public void ability7Press()
+	{
+		abilityHandler("7");
+		ability7.enabled = false;
 	}
 	
 	private void abilityHandler(string ability) 

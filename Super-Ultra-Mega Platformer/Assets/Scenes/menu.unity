@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 1510416533}
   - component: {fileID: 1510416532}
   m_Layer: 5
-  m_Name: Choose 4 Abilities
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
