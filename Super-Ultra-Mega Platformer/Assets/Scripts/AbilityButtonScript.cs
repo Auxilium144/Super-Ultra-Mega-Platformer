@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using System.IO;
 
 public class AbilityButtonScript : MonoBehaviour {
 
@@ -10,6 +12,8 @@ public class AbilityButtonScript : MonoBehaviour {
 	public Button ability3;
 	public Button ability4;
 	private int abilitiesCount;
+	private string[] abilities;
+	string path;
 	
 	void Start () 
 	{
@@ -18,30 +22,46 @@ public class AbilityButtonScript : MonoBehaviour {
 		ability3 = ability3.GetComponent<Button> ();
 		ability4 = ability4.GetComponent<Button> ();
 		abilitiesCount = 0;
+		abilities = new string[4];
+		path = Directory.GetCurrentDirectory();
 	}
 	
 	public void ability1Press()
 	{
-		if(abilitiesCount <= 2) 
-		{
-			
-		}
+		abilityHandler("1");
 		ability1.enabled = false;
 	}
 	
 	public void ability2Press()
 	{
+		abilityHandler("2");
 		ability2.enabled = false;
 	}
 	
 	public void ability3Press()
 	{
+		abilityHandler("3");
 		ability3.enabled = false;
 	}
 	
 	public void ability4Press()
 	{
+		abilityHandler("4");
 		ability4.enabled = false;
 	}
 	
+	private void abilityHandler(string ability) 
+	{
+		if(abilitiesCount <= 2) 
+		{
+			abilities[abilitiesCount] = ability;
+			abilitiesCount++;
+		}
+		else 
+		{
+			abilities[abilitiesCount] = ability;
+			System.IO.File.WriteAllLines(path + "abilities.txt", abilities);
+			Application.LoadLevel (2);
+		}
+	}
 }
