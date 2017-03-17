@@ -14,6 +14,6 @@ public class menuScript : MonoBehaviour {
 	
 	public void scene1Press()
 	{
-		Application.LoadLevel (1);
+		Application.LoadLevel(1);
 	}
 }

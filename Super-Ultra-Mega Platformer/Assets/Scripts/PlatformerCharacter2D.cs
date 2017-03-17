@@ -12,32 +12,53 @@ namespace UnityStandardAssets._2D
         [SerializeField] private bool m_AirControl = false;                 // Whether or not a player can steer while jumping;
         [SerializeField] private LayerMask m_WhatIsGround;                  // A mask determining what is ground to the character
         [SerializeField] private LayerMask m_WhatIsWater;                  // A mask determining what is water to the character
+        [SerializeField] private LayerMask m_WhatIsWall;                  // A mask determining what is water to the character
         [SerializeField] protected bool AbilityEnable;                  // are abilities allowed?
 
         private Transform m_GroundCheck;    // A position marking where to check if the player is grounded.
-        const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
-        private bool m_Grounded;            // Whether or not the player is grounded.
-        private bool m_Water;            // Whether or not the player is Watered.
         private Transform m_CeilingCheck;   // A position marking where to check for ceilings
+        private Transform m_WallCheck;      // checks for walls
+        private bool m_Grounded;            // Whether or not the player is grounded.
+        private bool m_Walled;              // Check if you're touching a wall
+        private bool m_Watered;            // Whether or not the player is Watered.        
         const float k_CeilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
+        const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
+        const float k_WalledRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
         private Animator m_Anim;            // Reference to the player's animator component.
         private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
         private int m_jumps = 0; //holds jump charges
-        private int NumJumps = 0;
+        private int NumJumps = 1;
+        private int abilityMovement;
+        private float m_jumpscale = 1;
+        public CircleCollider2D m_legs;
+        public PhysicsMaterial2D[] materials;
         //private bool m_doubleJumpEnable; //enables double jumps
         private void Awake()
         {
             // Setting up references.
             m_GroundCheck = transform.Find("GroundCheck");
             m_CeilingCheck = transform.Find("CeilingCheck");
+            m_WallCheck = transform.Find("WallCheck");
             m_Anim = GetComponent<Animator>();
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
+            m_legs = GetComponent<CircleCollider2D>();
         }
 
         public bool getAbilityEnable()
         {
             return AbilityEnable;
+        }
+        private int getDirection(bool pie)
+        {
+            if(pie)
+            {
+                return 1;
+            }
+            else
+            {
+                return -1;
+            }
         }
         public void setNumJumps(int pie)
         {
@@ -47,13 +68,13 @@ namespace UnityStandardAssets._2D
             }
             else
             {
-                NumJumps = 0;
+                NumJumps = 1;
             }
         }
         private void FixedUpdate()
         {
             m_Grounded = false;
-            m_Water = false;
+            m_Watered = false;
 
             // The player is grounded or water if a circlecast to the groundcheck position hits anything designated as ground or water
             // This can be done using layers instead but Sample Assets will not overwrite your project settings.
@@ -70,9 +91,18 @@ namespace UnityStandardAssets._2D
             {
                 if (waters[i].gameObject != gameObject)
                 {
-                    m_Water = true;
+                    m_Watered = true;
                 }
             }
+            Collider2D[] walls = Physics2D.OverlapCircleAll(m_WallCheck.position, k_WalledRadius, m_WhatIsWall);
+            for (int i = 0; i < walls.Length; i++)
+            {
+                if (walls[i].gameObject != gameObject)
+                {
+                    m_Walled = true;
+                }
+            }
+
             m_Anim.SetBool("Ground", m_Grounded);
 
             // Set the vertical animation
@@ -80,9 +110,20 @@ namespace UnityStandardAssets._2D
         }
 
 
-        public void Move(float move, bool crouch, bool jump, bool[] AbilityList)
+        public void Move(float move, bool crouch, bool jump, bool[] AbilityList, int currentAbility)
         {
-            
+            // Handling Cooldowns and other metrics
+            if (abilityMovement > 0)
+            {
+                abilityMovement = abilityMovement - 1; //sets up dash timers
+            }
+            // Controls double jump velocity output
+            if(m_jumpscale < 1)
+            {
+
+                m_jumpscale = m_jumpscale + .01f;
+
+            }
             // If crouching, check to see if the character can stand up
             if (!crouch && m_Anim.GetBool("Crouch"))
             {
@@ -97,12 +138,12 @@ namespace UnityStandardAssets._2D
             m_Anim.SetBool("Crouch", crouch);
 
             //only control the player if grounded, airControl, m_Water is turned on
-            if (m_Grounded || m_AirControl || m_Water)
+            if (m_Grounded || m_AirControl || m_Watered)
             {
                 // Reduce the speed if crouching by the crouchSpeed multiplier
                 move = (crouch ? move*m_CrouchSpeed : move);
                 // Reduce the speed if in water by the water multiplier
-                if (m_Water)
+                if (m_Watered)
                 {
                     move = (move * m_WaterSpeed);
                 }
@@ -122,44 +163,85 @@ namespace UnityStandardAssets._2D
                 }
             }
             // If the player should jump...
-            if (m_Water && jump && m_Anim.GetBool("Ground"))
+            if (m_Watered && jump && m_Anim.GetBool("Ground"))
             {
                 // reduced jump velocity due to water
+                m_jumpscale = 0f;
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce/4));
-                m_jumps = 1;
+                m_jumps = NumJumps;
                 Debug.Log("jump from water");
             }
             else if (m_Grounded && jump && m_Anim.GetBool("Ground"))
             {
                 // Add a vertical force to the player.
+                m_jumpscale = .1f;
                 m_Grounded = false;
                 m_Anim.SetBool("Ground", false);
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-                Debug.Log("jump from ground");
                 m_jumps = NumJumps;
+                Debug.Log("jump from ground");
             }
             else if (!m_Grounded && (m_jumps > 0) && AbilityList[0]) //&& !m_Anim.GetBool("Ground")
             {
-                m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce/2));
+                if(m_Watered)
+                {
+                    m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce/2));
+                }
+                else
+                {
+                    m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce * m_jumpscale * 3));
+                }
                 m_jumps = m_jumps - 1;
                 Debug.Log("jump from air");
+                Debug.Log("jump scale " + m_jumpscale);
             }
-            if(m_Grounded && AbilityList[1]) // dash forward/right
+            if(m_Grounded && AbilityList[1] && abilityMovement == 0) // dash forward/right
             {
-                m_Rigidbody2D.AddForce(new Vector2(1000f, 0f));
+                abilityMovement = 20;
+                m_Rigidbody2D.AddForce(new Vector2(1000*getDirection(m_FacingRight), 0f));
             }
-            if (m_Grounded && AbilityList[2]) // dash backwards/left
+            if (m_Grounded && AbilityList[2] && abilityMovement == 0)
             {
-                m_Rigidbody2D.AddForce(new Vector2(-1000f, 0f));
+                abilityMovement = 1;
+                m_Rigidbody2D.AddForce(new Vector2(10000*getDirection(m_FacingRight), 0f));
             }
-            if (m_Grounded && AbilityList[3]) // dash forward/right
+            if (m_Grounded && AbilityList[3] && abilityMovement == 0)
             {
+                abilityMovement = 20;
                 m_Grounded = false;
-                m_Rigidbody2D.AddForce(new Vector2(1000f, 400f));
+                m_Rigidbody2D.AddForce(new Vector2(1000*getDirection(m_FacingRight), 500f));
+            }
+            if (currentAbility == 4)
+            {
+                m_legs.sharedMaterial = materials[0];
+                //Debug.Log("bouncy" + m_legs.sharedMaterial);
+            }
+            else if (currentAbility != 4)
+            {
+                m_legs.sharedMaterial = materials[1];
+                //Debug.Log("not bouncy..." + m_legs.sharedMaterial);
+            }
+            //Debug.Log(m_Walled + " " + AbilityList[5] + " " + !m_Grounded + " " + abilityMovement);
+            if (m_Walled && AbilityList[5] && !m_Grounded && abilityMovement == 0)
+            {
+                Debug.Log("Attemped atleast");
+                abilityMovement = 10;
+                m_Walled = false;
+                m_Rigidbody2D.AddForce(new Vector2(-500 * getDirection(m_FacingRight), 600f*(m_jumpscale+1)));
+            }
+            if (m_Walled && AbilityList[6])
+            {
+                Debug.Log("Attemped atleast");
+                m_Walled = false;
+                m_Rigidbody2D.AddForce(new Vector2(0f, 400f));
             }
             // Move the character
-            m_Rigidbody2D.velocity = new Vector2(move * m_MaxSpeed, m_Rigidbody2D.velocity.y);
-            Debug.Log("The current move value is equal to " + move * m_MaxSpeed);
+            if (abilityMovement == 0)
+            {
+                m_Rigidbody2D.velocity = new Vector2(move * m_MaxSpeed, m_Rigidbody2D.velocity.y);
+            }
+            m_Walled = false;
+            //Debug.Log("The current move value is equal to " + move * m_MaxSpeed);
         }
 
 
@@ -178,11 +260,11 @@ namespace UnityStandardAssets._2D
 
 /*
  * 0 Double Jump
- * 1 Dash Forward (PlaceHolder)
- * 2 Dash Backward (PlaceHolder)
- * 3 Lunge right(PlaceHolder)
- * 4
- * 5
+ * 1 Dash Forward
+ * 2 Blink
+ * 3 Lunge
+ * 4 Bounce
+ * 5 Wall Jump
  * 6
  * 7
  * 8
