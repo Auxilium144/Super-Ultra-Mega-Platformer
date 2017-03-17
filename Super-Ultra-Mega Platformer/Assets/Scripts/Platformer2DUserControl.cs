@@ -25,8 +25,10 @@ namespace UnityStandardAssets._2D
 
         private void Awake()
         {
-            m_Character = GetComponent<PlatformerCharacter2D>();
 			getAbilityList();
+			
+            m_Character = GetComponent<PlatformerCharacter2D>();
+			
 			
         }
 
@@ -170,9 +172,10 @@ namespace UnityStandardAssets._2D
 			for (int i = 0; i <= 3; i++) 
 			{
 				equippedAbility[i] = Int32.Parse(lines[i]) - 1;
-				Debug.Log("Stuff");
-				Debug.Log(equippedAbility[3]);
+				Debug.Log("Stuff" + lines[i]);
+				Debug.Log("other: " + equippedAbility[i]);
 			}
+			
 		}
     }
 }
