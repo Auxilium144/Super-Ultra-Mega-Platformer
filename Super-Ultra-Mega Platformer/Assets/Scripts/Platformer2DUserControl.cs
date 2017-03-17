@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -11,7 +12,7 @@ namespace UnityStandardAssets._2D
         private bool m_Jump;
         private bool[] AbilityList = new bool[]{ false, false, false, false, false, false, false, false, false, false }; //10 list of ability and if they are enabled, all false unless called
         private bool[] m_Ability = new bool[] { false, false, false, false }; // input controls and sets up current ability usage asdw
-        private int[] equippedAbility = {0,1,2,6}; //4 currently equipped abilities in order of asdw EX: 1, 4, 5, 6,
+        private int[] equippedAbility = new int[4]; //4 currently equipped abilities in order of asdw EX: 1, 4, 5, 6,
         private int currentAbility = 0; //currently equipped and allowed to be excuted
 
         public void setEquippedAbility(int[] list)//sets equipped abilities
@@ -25,6 +26,8 @@ namespace UnityStandardAssets._2D
         private void Awake()
         {
             m_Character = GetComponent<PlatformerCharacter2D>();
+			getAbilityList();
+			
         }
 
         private void setOther(int x)
@@ -159,5 +162,17 @@ namespace UnityStandardAssets._2D
             m_Jump = false;
             setFalseList(4);
         }
+		
+		private void getAbilityList() 
+		{
+			string path = Directory.GetCurrentDirectory();
+			string[] lines = System.IO.File.ReadAllLines(path + "abilities.txt");
+			for (int i = 0; i <= 3; i++) 
+			{
+				equippedAbility[i] = Int32.Parse(lines[i]) - 1;
+				Debug.Log("Stuff");
+				Debug.Log(equippedAbility[3]);
+			}
+		}
     }
 }
