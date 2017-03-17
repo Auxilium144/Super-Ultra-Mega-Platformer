@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212281130691074664}
   - component: {fileID: 61075175164137040}
   - component: {fileID: 249501577264527084}
-  m_Layer: 1
+  m_Layer: 4
   m_Name: Stage-WaterCube, to neck with drag
   m_TagString: Platform
   m_Icon: {fileID: 0}

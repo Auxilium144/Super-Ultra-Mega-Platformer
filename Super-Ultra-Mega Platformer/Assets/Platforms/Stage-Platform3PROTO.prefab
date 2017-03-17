@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4454837734951430}
   - component: {fileID: 212836379207239138}
   - component: {fileID: 61160436257616106}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stage-Platform3PROTO
   m_TagString: Platform
   m_Icon: {fileID: 0}
