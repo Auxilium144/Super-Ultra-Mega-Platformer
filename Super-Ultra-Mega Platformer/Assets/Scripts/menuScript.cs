@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class menuScript : MonoBehaviour {
+namespace UnityStandardAssets._2D
+{
+    public class menuScript : MonoBehaviour
+    {
 
-	public Button scene1Text;
+        public Button scene1Text;
 
-	// Use this for initialization
-	void Start () {
-		scene1Text = scene1Text.GetComponent<Button> ();
-	}
-	
-	public void scene1Press()
-	{
-		Application.LoadLevel(1);
-	}
+        // Use this for initialization
+        void Start()
+        {
+            scene1Text = scene1Text.GetComponent<Button>();
+        }
+
+        public void scene1Press()
+        {
+            SceneManager.LoadScene(1);
+        }
+    }
 }
