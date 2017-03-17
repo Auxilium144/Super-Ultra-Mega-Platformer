@@ -13,12 +13,12 @@ namespace UnityStandardAssets._2D
         // Use this for initialization
         void Start()
         {
-            scene1Text = scene1Text.GetComponent<Button>();
+            //scene1Text = scene1Text.GetComponent<Button>();
         }
 
         public void scene1Press()
         {
-            SceneManager.LoadScene(1);
+            Application.LoadLevel(1);
         }
     }
 }

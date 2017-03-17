@@ -12,7 +12,7 @@ namespace UnityStandardAssets._2D
         private bool m_Jump;
         private bool[] AbilityList = new bool[]{ false, false, false, false, false, false, false, false, false, false }; //10 list of ability and if they are enabled, all false unless called
         private bool[] m_Ability = new bool[] { false, false, false, false }; // input controls and sets up current ability usage asdw
-        private int[] equippedAbility = new int[4]; //4 currently equipped abilities in order of asdw EX: 1, 4, 5, 6,
+        private int[] equippedAbility = new int[] { 0, 4, 5, 6 }; //4 currently equipped abilities in order of asdw EX: 1, 4, 5, 6,
         private int currentAbility = 0; //currently equipped and allowed to be excuted
 
         public void setEquippedAbility(int[] list)//sets equipped abilities
@@ -171,7 +171,7 @@ namespace UnityStandardAssets._2D
 			string[] lines = System.IO.File.ReadAllLines(path + "abilities.txt");
 			for (int i = 0; i <= 3; i++) 
 			{
-				equippedAbility[i] = Int32.Parse(lines[i]) - 1;
+				equippedAbility[i] = Int32.Parse(lines[i]);
 				Debug.Log("Stuff" + lines[i]);
 				Debug.Log("other: " + equippedAbility[i]);
 			}
