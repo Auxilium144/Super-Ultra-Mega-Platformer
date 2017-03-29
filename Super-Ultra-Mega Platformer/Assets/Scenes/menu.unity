@@ -393,6 +393,7 @@ GameObject:
   - component: {fileID: 1635213845}
   - component: {fileID: 1635213844}
   - component: {fileID: 1635213848}
+  - component: {fileID: 1635213849}
   m_Layer: 5
   m_Name: StartMenu
   m_TagString: Untagged
@@ -484,13 +485,26 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1635213843}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d07d80c41f7e70f4da3cebbfec4eaf38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene1Text: {fileID: 2094306308}
-  exit: {fileID: 525647400}
+  scene1Text: {fileID: 0}
+--- !u!114 &1635213849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1635213843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d7fe375dd55c5a4fa9bdff0e23ab57c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Button:
+  - {fileID: 2094306308}
+  - {fileID: 525647400}
 --- !u!1 &1828121174
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,15 +642,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1635213848}
-        m_MethodName: scene1Press
-        m_Mode: 1
+      - m_Target: {fileID: 1635213849}
+        m_MethodName: ChangeScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: ability_select_1
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,

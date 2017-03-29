@@ -181,55 +181,45 @@ namespace UnityStandardAssets._2D
                 m_jumps = NumJumps;
                 Debug.Log("jump from ground");
             }
-            else if (!m_Grounded && (m_jumps > 0) && AbilityList[0]) //&& !m_Anim.GetBool("Ground")
+            else if (!m_Grounded && (m_jumps > 0) && AbilityList[0]) //&& !m_Anim.GetBool("Ground") [Ability 0, Double Jump]
             {
-                if(m_Watered)
-                {
-                    m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce/2));
-                }
-                else
-                {
-                    m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce * m_jumpscale * 3));
-                }
-                m_jumps = m_jumps - 1;
-                Debug.Log("jump from air");
-                Debug.Log("jump scale " + m_jumpscale);
+                DoubleJumpCheck();
             }
-            if(m_Grounded && AbilityList[1] && abilityMovement == 0) // dash forward/right
+            if(m_Grounded && AbilityList[1] && abilityMovement == 0) // dash forward/right Ability 1, Dash
             {
                 abilityMovement = 20;
                 m_Rigidbody2D.AddForce(new Vector2(1000*getDirection(m_FacingRight), 0f));
             }
-            if (m_Grounded && AbilityList[2] && abilityMovement == 0)
+            if (m_Grounded && AbilityList[2] && abilityMovement == 0) // Abiilty 2, Blink
             {
                 abilityMovement = 1;
                 m_Rigidbody2D.AddForce(new Vector2(10000*getDirection(m_FacingRight), 0f));
             }
-            if (m_Grounded && AbilityList[3] && abilityMovement == 0)
+            if (m_Grounded && AbilityList[3] && abilityMovement == 0) // Ability 3, Lunge
             {
                 abilityMovement = 20;
                 m_Grounded = false;
                 m_Rigidbody2D.AddForce(new Vector2(1000*getDirection(m_FacingRight), 500f));
             }
-            if (currentAbility == 4)
+            if (currentAbility == 4) //Ability 4, bouncy
             {
                 m_legs.sharedMaterial = materials[0];
                 //Debug.Log("bouncy" + m_legs.sharedMaterial);
             }
-            else if (currentAbility != 4)
+            else if (currentAbility != 4) //Ability 4, debouncy
             {
                 m_legs.sharedMaterial = materials[1];
                 //Debug.Log("not bouncy..." + m_legs.sharedMaterial);
             }
             //Debug.Log(m_Walled + " " + AbilityList[5] + " " + !m_Grounded + " " + abilityMovement);
-            if (m_Walled && AbilityList[5] && !m_Grounded && abilityMovement == 0)
+            if (m_Walled && AbilityList[5] && !m_Grounded && abilityMovement == 0) // Ability 5,Wall Jump
             {
                 Debug.Log("Attemped atleast");
                 abilityMovement = 10;
                 m_Walled = false;
                 m_Rigidbody2D.AddForce(new Vector2(-500 * getDirection(m_FacingRight), 600f*(m_jumpscale+1)));
             }
-            if (m_Walled && AbilityList[6])
+            if (m_Walled && AbilityList[6]) // Ability 6, Wall Climb
             {
                 Debug.Log("Attemped atleast");
                 m_Walled = false;
@@ -254,6 +244,20 @@ namespace UnityStandardAssets._2D
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
             transform.localScale = theScale;
+        }
+        private void DoubleJumpCheck()
+        {
+            if (m_Watered)
+            {
+                m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce / 2));
+            }
+            else
+            {
+                m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce * m_jumpscale * 3));
+            }
+            m_jumps = m_jumps - 1;
+            Debug.Log("jump from air");
+            Debug.Log("jump scale " + m_jumpscale);
         }
     }
 }

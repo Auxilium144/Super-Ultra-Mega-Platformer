@@ -6,20 +6,18 @@ using UnityEngine.SceneManagement;
 
 namespace UnityStandardAssets._2D
 {
-    public class menuScript : MonoBehaviour
+    public class SceneTransitioner : MonoBehaviour
     {
-
-        public Button scene1Text;
-
+        public Button[] Button;
+        //[SerializeField] private string m_Name;
         // Use this for initialization
         void Start()
         {
             //scene1Text = scene1Text.GetComponent<Button>();
         }
-
-        public void scene1Press()
+        public void ChangeScene(string nameOfScene)
         {
-            SceneManager.LoadScene("ability_select_1");
+            SceneManager.LoadScene(nameOfScene);
         }
     }
 }

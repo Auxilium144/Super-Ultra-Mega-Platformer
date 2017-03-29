@@ -91,7 +91,7 @@ namespace UnityStandardAssets._2D
                 abilities[abilitiesCount] = ability;
 
                 System.IO.File.WriteAllLines(path + "abilities.txt", abilities);
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene("DemoLevel");
             }
         }
     }
