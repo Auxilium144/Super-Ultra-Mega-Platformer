@@ -12,9 +12,10 @@ namespace UnityStandardAssets._2D
         private bool m_Jump;
         private bool[] AbilityList = new bool[]{ false, false, false, false, false, false, false, false, false, false }; //10 list of ability and if they are enabled, all false unless called
         private bool[] m_Ability = new bool[] { false, false, false, false }; // input controls and sets up current ability usage asdw
-        private int[] equippedAbility = new int[] { 0, 4, 5, 6 }; //4 currently equipped abilities in order of asdw EX: 1, 4, 5, 6,
+        private int[] equippedAbility = new int[] { 0, 4, 5, 2, 100}; //4 currently equipped abilities in order of asdw EX: 1, 4, 5, 6,
         private int currentAbility = 0; //currently equipped and allowed to be excuted
-
+        private int pressedKey;
+        //private string[] inputList = ;
         public void setEquippedAbility(int[] list)//sets equipped abilities
         {
             for(int i=0; i<4; i++)
@@ -23,9 +24,9 @@ namespace UnityStandardAssets._2D
             }
         }
 
-        private void Awake()
+        private void Awake() //Perform on character creation
         {
-			getAbilityList();
+			//getAbilityList(); //Refers abilityId list
 			
             m_Character = GetComponent<PlatformerCharacter2D>();
 			
@@ -40,6 +41,16 @@ namespace UnityStandardAssets._2D
                 if (i != x)
                 {
                     m_Ability[i] = false;
+                }
+                else if(i == x)
+                {
+                    m_Ability[i] = true;
+                    currentAbility = equippedAbility[x];
+                    Debug.Log("Ability is set " + currentAbility);
+                }
+                else
+                {
+                    Debug.Log("Not setting m_Ability Properly");
                 }
             }
         }
@@ -57,30 +68,32 @@ namespace UnityStandardAssets._2D
         }
         private int readinput()
         {
-            int input = 0;
             //Debug.Log("reading input...");
             if (CrossPlatformInputManager.GetButtonDown("Ability0"))
             {
-                input = 0;
                 Debug.Log("input was key a");
+                return 0;
             }
-            else if(CrossPlatformInputManager.GetButtonDown("Ability1"))
+            else if (CrossPlatformInputManager.GetButtonDown("Ability1"))
             {
-                 input = 1;
                 Debug.Log("input was key s");
+                return 1;
             }
             else if (CrossPlatformInputManager.GetButtonDown("Ability2"))
             {
-                input = 2;
                 Debug.Log("input was key d");
+                return 2;
             }
             else if (CrossPlatformInputManager.GetButtonDown("Ability3"))
             {
-                input = 3;
                 Debug.Log("input was key w");
+                return 3;
             }
-            //Debug.Log("Sending output of reading");
-            return input;
+            else
+            {
+                //Debug.Log("Sending output of reading");
+                return 4;
+            }
         }
 
         private void Update()
@@ -91,37 +104,30 @@ namespace UnityStandardAssets._2D
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump"); //key space
 
             }
+            // Changes abilities between eachother
             if (m_Character.getAbilityEnable() && !(currentAbility == equippedAbility[readinput()])) // Changes Abilities by setting other keys to false and that key to true
             {
                 //Debug.Log("current " + currentAbility);
-                // Read the Ability1 input
-                if(CrossPlatformInputManager.GetButtonDown("Ability0"))
+                pressedKey = readinput();
+                if (pressedKey == 0)
                 {
-                    m_Ability[0] = CrossPlatformInputManager.GetButtonDown("Ability0"); //key a 
-                    setOther(0); //make sure other inputs are not read
-                    currentAbility = equippedAbility[0];
+                    setOther(0); //make sure other inputs are not read and sets current input to true
                     Debug.Log("Ability 0 is enabled");
 
                 }
-                else if (CrossPlatformInputManager.GetButtonDown("Ability1"))
+                else if (pressedKey == 1)
                 {
-                    m_Ability[1] = CrossPlatformInputManager.GetButtonDown("Ability1"); //key s 
                     setOther(1);
-                    currentAbility = equippedAbility[1];
                     Debug.Log("Ability 1 is enabled");
                 }
-                else if (CrossPlatformInputManager.GetButtonDown("Ability2"))
+                else if (pressedKey == 2)
                 {
-                    m_Ability[2] = CrossPlatformInputManager.GetButtonDown("Ability2"); //key d 
                     setOther(2);
-                    currentAbility = equippedAbility[2];
                     Debug.Log("Ability 2 is enabled");
                 }
-                else if (CrossPlatformInputManager.GetButtonDown("Ability3"))
-                {
-                    m_Ability[3] = CrossPlatformInputManager.GetButtonDown("Ability3"); //key w 
+                else if (pressedKey == 3)
+                { 
                     setOther(3);
-                    currentAbility = equippedAbility[3];
                     Debug.Log("Ability 3 is enabled, and ability id is " + currentAbility);
                 }
 
