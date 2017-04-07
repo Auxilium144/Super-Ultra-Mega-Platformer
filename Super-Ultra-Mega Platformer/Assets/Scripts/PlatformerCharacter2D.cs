@@ -31,6 +31,7 @@ namespace UnityStandardAssets._2D
         private int NumJumps = 1;
         private int abilityMovement;
         private float m_jumpscale = 1;
+        private bool blinkCD;
         public CircleCollider2D m_legs;
         public PhysicsMaterial2D[] materials;
         //private bool m_doubleJumpEnable; //enables double jumps
@@ -133,6 +134,10 @@ namespace UnityStandardAssets._2D
                     crouch = true;
                 }
             }
+            if (m_Grounded==true)
+            {
+                blinkCD = false;
+            }
 
             // Set whether or not the character is crouching in the animator
             m_Anim.SetBool("Crouch", crouch);
@@ -190,10 +195,17 @@ namespace UnityStandardAssets._2D
                 abilityMovement = 20;
                 m_Rigidbody2D.AddForce(new Vector2(1000*getDirection(m_FacingRight), 0f));
             }
-            if (m_Grounded && AbilityList[2] && abilityMovement == 0) // Abiilty 2, Blink
+            if (!blinkCD && AbilityList[2] && abilityMovement == 0) // Abiilty 2, Blink
             {
                 abilityMovement = 1;
                 m_Rigidbody2D.AddForce(new Vector2(10000*getDirection(m_FacingRight), 0f));
+                blinkCD = true;
+            }
+            if (!blinkCD && AbilityList[9] && abilityMovement == 0) // Abiilty 2, Blink
+            {
+                abilityMovement = 1;
+                m_Rigidbody2D.AddForce(new Vector2(10000 * getDirection(m_FacingRight), 0f));
+                blinkCD = true;
             }
             if (m_Grounded && AbilityList[3] && abilityMovement == 0) // Ability 3, Lunge
             {
