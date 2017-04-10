@@ -21,5 +21,10 @@ namespace UnityStandardAssets._2D
         {
             SceneManager.LoadScene("ability_select_1");
         }
+		
+		public void exitPress() 
+		{
+			Application.Quit();
+		}
     }
 }

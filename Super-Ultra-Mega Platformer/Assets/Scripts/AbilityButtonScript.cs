@@ -17,6 +17,9 @@ namespace UnityStandardAssets._2D
         public Button ability5;
         public Button ability6;
         public Button ability7;
+		public Button enterStage;
+		public Button back;
+		public Button flushAbilities;
         private int abilitiesCount;
         private string[] abilities;
         string path;
@@ -36,6 +39,32 @@ namespace UnityStandardAssets._2D
             abilities = new string[4];
             path = Directory.GetCurrentDirectory();
         }
+		
+		public void backPress() 
+		{
+			SceneManager.LoadScene("menu");
+		}
+		
+		public void enterPress()
+		{
+			System.IO.File.WriteAllLines(path + "abilities.txt", abilities);
+			SceneManager.LoadScene("Level_1");
+		}
+		
+		public void resetAbilities() 
+		{
+			abilitiesCount = 0;
+			abilities = new string[4];
+			ability1.enabled = true;
+			ability2.enabled = true;
+			ability3.enabled = true;
+			ability4.enabled = true;
+			ability5.enabled = true;
+			ability6.enabled = true;
+			ability7.enabled = true;
+			
+			
+		}
 
         public void ability1Press()
         {
@@ -91,8 +120,10 @@ namespace UnityStandardAssets._2D
                 abilities[abilitiesCount] = ability;
 
                 System.IO.File.WriteAllLines(path + "abilities.txt", abilities);
-                SceneManager.LoadScene("DemoLevel");
+                SceneManager.LoadScene("Level_1");
             }
         }
+		
+		
     }
 }
