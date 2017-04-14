@@ -269,8 +269,8 @@ namespace UnityStandardAssets._2D
  * 3 Lunge
  * 4 Bounce
  * 5 Wall Jump
- * 6
- * 7
+ * 6 Wall Climb
+ * 7 Grapple
  * 8
  * 9
  * 10
