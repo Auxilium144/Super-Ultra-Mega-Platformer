@@ -18,7 +18,7 @@ TagManager:
   - Platform
   - GreySpace
   - NonWallJump
-  - 
+  - Traps
   - 
   - 
   - 
@@ -44,4 +44,7 @@ TagManager:
     locked: 0
   - name: KillZones
     uniqueID: 3801972115
+    locked: 0
+  - name: Traps
+    uniqueID: 1914908933
     locked: 0
