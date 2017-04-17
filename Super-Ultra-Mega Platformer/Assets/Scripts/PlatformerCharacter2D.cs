@@ -71,6 +71,20 @@ namespace UnityStandardAssets._2D
                 NumJumps = 1;
             }
         }
+        void OnTriggerEnter2D(Collider2D otherObject)
+        {
+            if(otherObject.gameObject.tag == "MovingPlatform")
+            {
+                transform.parent = otherObject.transform;
+            }
+        }
+        void OnTriggerExit2D(Collider2D otherObject)
+        {
+            if(otherObject.gameObject.tag == "MovingPlatform")
+            {
+                transform.parent = null;
+            }
+        }
         private void FixedUpdate()
         {
             m_Grounded = false;

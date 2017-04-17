@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Platform
+  - Moving Platform
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
@@ -44,4 +46,10 @@ TagManager:
     locked: 0
   - name: KillZones
     uniqueID: 3801972115
+    locked: 0
+  - name: Trap
+    uniqueID: 2174002031
+    locked: 0
+  - name: Ammo
+    uniqueID: 2490909495
     locked: 0
