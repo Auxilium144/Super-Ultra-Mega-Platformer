@@ -72,6 +72,20 @@ namespace UnityStandardAssets._2D
                 NumJumps = 1;
             }
         }
+        void OnTriggerEnter2D(Collider2D otherObject)
+        {
+            if(otherObject.gameObject.tag == "MovingPlatform")
+            {
+                transform.parent = otherObject.transform;
+            }
+        }
+        void OnTriggerExit2D(Collider2D otherObject)
+        {
+            if(otherObject.gameObject.tag == "MovingPlatform")
+            {
+                transform.parent = null;
+            }
+        }
         private void FixedUpdate()
         {
             m_Grounded = false;
@@ -192,26 +206,11 @@ namespace UnityStandardAssets._2D
             }
             if(m_Grounded && AbilityList[1] && abilityMovement == 0) // dash forward/right Ability 1, Dash
             {
-                abilityMovement = 20;
-                m_Rigidbody2D.AddForce(new Vector2(1000*getDirection(m_FacingRight), 0f));
+                Dash();
             }
             if (!blinkCD && AbilityList[2] && abilityMovement == 0) // Abiilty 2, Blink
             {
-                abilityMovement = 1;
-                m_Rigidbody2D.AddForce(new Vector2(10000*getDirection(m_FacingRight), 0f));
-                blinkCD = true;
-            }
-            if (!blinkCD && AbilityList[9] && abilityMovement == 0) // Abiilty 2, Blink
-            {
-                abilityMovement = 1;
-                m_Rigidbody2D.AddForce(new Vector2(10000 * getDirection(m_FacingRight), 0f));
-                blinkCD = true;
-            }
-            if (m_Grounded && AbilityList[3] && abilityMovement == 0) // Ability 3, Lunge
-            {
-                abilityMovement = 20;
-                m_Grounded = false;
-                m_Rigidbody2D.AddForce(new Vector2(1000*getDirection(m_FacingRight), 500f));
+                Blink();
             }
             if (currentAbility == 4) //Ability 4, bouncy
             {
@@ -226,16 +225,27 @@ namespace UnityStandardAssets._2D
             //Debug.Log(m_Walled + " " + AbilityList[5] + " " + !m_Grounded + " " + abilityMovement);
             if (m_Walled && AbilityList[5] && !m_Grounded && abilityMovement == 0) // Ability 5,Wall Jump
             {
-                Debug.Log("Attemped atleast");
-                abilityMovement = 10;
-                m_Walled = false;
-                m_Rigidbody2D.AddForce(new Vector2(-500 * getDirection(m_FacingRight), 600f*(m_jumpscale+1)));
+                WallJump();
             }
             if (m_Walled && AbilityList[6]) // Ability 6, Wall Climb
             {
-                Debug.Log("Attemped atleast");
-                m_Walled = false;
-                m_Rigidbody2D.AddForce(new Vector2(0f, 400f));
+                WallClimb();
+            }
+            if (currentAbility == 7) // Ability 7, heavy
+            {
+                m_Rigidbody2D.gravityScale = 4;
+            }
+            else if (currentAbility != 7)//return to regular weight
+            {
+                m_Rigidbody2D.gravityScale = 3;
+            }
+            if (currentAbility == 3) // Ability 3, float
+            {
+                m_Rigidbody2D.gravityScale = 1;
+            }
+            else if (currentAbility != 3)//return to regular weight
+            {
+                m_Rigidbody2D.gravityScale = 3;
             }
             // Move the character
             if (abilityMovement == 0)
@@ -271,6 +281,30 @@ namespace UnityStandardAssets._2D
             Debug.Log("jump from air");
             Debug.Log("jump scale " + m_jumpscale);
         }
+        private void Dash()
+        {
+                abilityMovement = 20;
+                m_Rigidbody2D.AddForce(new Vector2(1000 * getDirection(m_FacingRight), 0f));
+        }
+        private void Blink()
+        {
+                abilityMovement = 1;
+                m_Rigidbody2D.AddForce(new Vector2(10000 * getDirection(m_FacingRight), 0f));
+                blinkCD = true;
+        }
+        private void WallJump()
+        {
+            Debug.Log("Attemped atleast");
+            abilityMovement = 10;
+            m_Walled = false;
+            m_Rigidbody2D.AddForce(new Vector2(-500 * getDirection(m_FacingRight), 600f * (m_jumpscale + 1)));
+        }
+        private void WallClimb()
+        {
+            Debug.Log("Attemped atleast");
+            m_Walled = false;
+            m_Rigidbody2D.AddForce(new Vector2(0f, 400f));
+        }
     }
 }
 
@@ -278,11 +312,11 @@ namespace UnityStandardAssets._2D
  * 0 Double Jump
  * 1 Dash Forward
  * 2 Blink
- * 3 Lunge
+ * 3 Float
  * 4 Bounce
  * 5 Wall Jump
- * 6
- * 7
+ * 6 Wall Climb
+ * 7 Heavy
  * 8
  * 9
  * 10

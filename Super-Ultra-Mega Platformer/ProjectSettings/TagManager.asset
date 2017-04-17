@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Platform
+  - Moving Platform
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
@@ -16,9 +18,9 @@ TagManager:
   - 
   - Player
   - Platform
-  - GreySpace
-  - NonWallJump
-  - Traps
+  - Trap
+  - 
+  - 
   - 
   - 
   - 
@@ -45,6 +47,9 @@ TagManager:
   - name: KillZones
     uniqueID: 3801972115
     locked: 0
-  - name: Traps
-    uniqueID: 1914908933
+  - name: Trap
+    uniqueID: 2174002031
+    locked: 0
+  - name: Ammo
+    uniqueID: 2490909495
     locked: 0
