@@ -4,8 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Hud : MonoBehaviour {
+	public Canvas canvas;
+	private bool canvasOn = true;
 	public Text abilityW;
 	public Text abilityA;
 	public Text abilityS;
@@ -31,6 +34,17 @@ public class Hud : MonoBehaviour {
 		abilityD.text = keyAbilities[2];
 	}
 	
+	private void Update() 
+	{
+		
+		if(CrossPlatformInputManager.GetButtonDown("Hide")) {
+			Debug.Log("Hide");
+			canvasOn = !canvasOn;
+			canvas.GetComponent<Canvas> ().enabled = canvasOn;
+			
+		}
+	}
+	
 	
 	private void getAbilityList() 
 	{
@@ -43,4 +57,5 @@ public class Hud : MonoBehaviour {
 		}
 		
 	}
+	
 }

@@ -26,7 +26,7 @@ namespace UnityStandardAssets._2D
 
         private void Awake() //Perform on character creation
         {
-			//getAbilityList(); //Refers abilityId list
+			getAbilityList(); //Refers abilityId list
 			
             m_Character = GetComponent<PlatformerCharacter2D>();
 			
