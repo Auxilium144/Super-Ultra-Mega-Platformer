@@ -8,6 +8,7 @@ TagManager:
   - MovingPlatform
   - NullField
   - AbilityNegator
+  - Teleporter
   layers:
   - Default
   - TransparentFX
