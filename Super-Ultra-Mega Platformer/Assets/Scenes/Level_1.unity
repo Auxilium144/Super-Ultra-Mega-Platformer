@@ -2381,14 +2381,17 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4867146910634470, guid: fadf81d64492b024bb85e45589ea47a2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867146910634470, guid: fadf81d64492b024bb85e45589ea47a2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -18.27
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fadf81d64492b024bb85e45589ea47a2, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1143527408 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4791121926320460, guid: fadf81d64492b024bb85e45589ea47a2,
-    type: 2}
-  m_PrefabInternal: {fileID: 1143527407}
 --- !u!1001 &1159381888
 Prefab:
   m_ObjectHideFlags: 0
@@ -4637,7 +4640,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1909948544
 MonoBehaviour:
@@ -4650,7 +4653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8238cc53530b64fbb7828c3d3bb591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1143527408}
+  target: {fileID: 0}
   damping: 0.2
   lookAheadFactor: 6
   lookAheadReturnSpeed: 1

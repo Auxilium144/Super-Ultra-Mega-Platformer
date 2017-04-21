@@ -6529,7 +6529,7 @@ Prefab:
         type: 2}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6200000, guid: 3626fe8e008014f6bbd19bb72937b311, type: 2}
     - target: {fileID: 61160436257616106, guid: ba0515790b8c20b428b3b9718ac3bf9f,
         type: 2}
       propertyPath: m_Offset.y
@@ -8180,7 +8180,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.0828466
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
