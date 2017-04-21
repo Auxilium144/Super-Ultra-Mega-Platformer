@@ -42,13 +42,13 @@ namespace UnityStandardAssets._2D
 		
 		public void backPress() 
 		{
-			SceneManager.LoadScene("menu");
+			SceneManager.LoadScene("Stage_Select");
 		}
 		
-		public void enterPress()
+		public void enterPress(string nameOfScene)
 		{
 			System.IO.File.WriteAllLines(path + "abilities.txt", abilities);
-			SceneManager.LoadScene("Level_1");
+			SceneManager.LoadScene((string) nameOfScene);
 		}
 		
 		public void resetAbilities() 
