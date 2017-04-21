@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4869808320880104}
   - component: {fileID: 212442865459580646}
   - component: {fileID: 61718355323729834}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Stage-WallTop1
   m_TagString: Platform
   m_Icon: {fileID: 0}
