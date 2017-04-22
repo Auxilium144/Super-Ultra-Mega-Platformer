@@ -34,7 +34,7 @@ public class MovingLazer : MonoBehaviour
     {
         if (axis == 'y')
         {
-            if (direction < 0)//if going up
+            if (direction > 0)//if going up
             {
                 if (originy - transform.position.y < distance)//going up!
                 {
@@ -46,7 +46,7 @@ public class MovingLazer : MonoBehaviour
                     timer = timerMax;//respawn time
                 }              
             }
-            else if (direction > 0)
+            else if (direction < 0)
             {
                 if (originx - transform.position.y > distance)//going down
                 {
@@ -58,6 +58,7 @@ public class MovingLazer : MonoBehaviour
                     timer = timerMax;//respawn time
                 }
             }
+
             if (timer < 1)
             {
                 transform.Translate(0, useSpeed * Time.deltaTime, 0);// go
