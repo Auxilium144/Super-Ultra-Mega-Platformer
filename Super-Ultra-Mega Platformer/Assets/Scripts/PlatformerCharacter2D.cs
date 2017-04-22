@@ -235,18 +235,20 @@ namespace UnityStandardAssets._2D
             {
                 m_Rigidbody2D.gravityScale = 4;
             }
-            else if (currentAbility != 7)//return to regular weight
+            else if (currentAbility != 7 && currentAbility != 3)//return to regular weight
             {
                 m_Rigidbody2D.gravityScale = 3;
+                m_Rigidbody2D.drag = 0;
             }
             if (currentAbility == 3) // Ability 3, float
             {
                 m_Rigidbody2D.gravityScale = 1;
+                m_Rigidbody2D.drag = 5;
             }
-            else if (currentAbility != 3)//return to regular weight
+            /*else if (currentAbility != 3)//return to regular weight
             {
                 m_Rigidbody2D.gravityScale = 3;
-            }
+            }*/
             // Move the character
             if (abilityMovement == 0)
             {
@@ -275,7 +277,7 @@ namespace UnityStandardAssets._2D
             }
             else
             {
-                m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce * m_jumpscale * 3));
+                m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
             }
             m_jumps = m_jumps - 1;
             Debug.Log("jump from air");
@@ -297,7 +299,7 @@ namespace UnityStandardAssets._2D
             Debug.Log("Attemped atleast");
             abilityMovement = 10;
             m_Walled = false;
-            m_Rigidbody2D.AddForce(new Vector2(-500 * getDirection(m_FacingRight), 600f * (m_jumpscale + 1)));
+            m_Rigidbody2D.AddForce(new Vector2(-800 * getDirection(m_FacingRight), 600f * (m_jumpscale + 1)));
         }
         private void WallClimb()
         {

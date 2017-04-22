@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4088019460255740}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LazarFiringGunx
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4973941733919336}
   - component: {fileID: 212534959050633780}
   - component: {fileID: 60711494759527460}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Trap-LazerMountX
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 61740735691031896}
   - component: {fileID: 114894723207729502}
   - component: {fileID: 114589645690056250}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trap-LazerX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
