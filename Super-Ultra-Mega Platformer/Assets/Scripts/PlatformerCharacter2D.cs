@@ -34,16 +34,23 @@ namespace UnityStandardAssets._2D
         private bool blinkCD;
         public CircleCollider2D m_legs;
         public PhysicsMaterial2D[] materials;
+        public Sprite[] Sprites; // Please lists sprites in cordinates of the abilities
+        private SpriteRenderer Renderer;
         //private bool m_doubleJumpEnable; //enables double jumps
         private void Awake()
         {
             // Setting up references.
-            m_GroundCheck = transform.Find("GroundCheck");
+            m_GroundCheck = transform.Find("GroundCheck");//Checks determines what is what for abilities
             m_CeilingCheck = transform.Find("CeilingCheck");
             m_WallCheck = transform.Find("WallCheck");
-            m_Anim = GetComponent<Animator>();
-            m_Rigidbody2D = GetComponent<Rigidbody2D>();
-            m_legs = GetComponent<CircleCollider2D>();
+            m_Anim = GetComponent<Animator>();//obsolete code
+            m_Rigidbody2D = GetComponent<Rigidbody2D>();// handles movement
+            m_legs = GetComponent<CircleCollider2D>();// determines material of legs
+            Renderer = GetComponent<SpriteRenderer>();// sprite changing.
+            if (Renderer.sprite == null)
+            {
+                Renderer.sprite = Sprites[0];//sets default sprite incase someone forgets to assign a sprite.
+            }
         }
 
         public bool getAbilityEnable()
@@ -203,18 +210,22 @@ namespace UnityStandardAssets._2D
             else if (!m_Grounded && (m_jumps > 0) && AbilityList[0]) //&& !m_Anim.GetBool("Ground") [Ability 0, Double Jump]
             {
                 DoubleJumpCheck();
+                Renderer.sprite = Sprites[1];
             }
             if(m_Grounded && AbilityList[1] && abilityMovement == 0) // dash forward/right Ability 1, Dash
             {
                 Dash();
+                Renderer.sprite = Sprites[2];
             }
             if (!blinkCD && AbilityList[2] && abilityMovement == 0) // Abiilty 2, Blink
             {
                 Blink();
+                Renderer.sprite = Sprites[3];
             }
             if (currentAbility == 4) //Ability 4, bouncy
             {
                 m_legs.sharedMaterial = materials[0];
+                Renderer.sprite = Sprites[5];
                 //Debug.Log("bouncy" + m_legs.sharedMaterial);
             }
             else if (currentAbility != 4) //Ability 4, debouncy
@@ -226,14 +237,17 @@ namespace UnityStandardAssets._2D
             if (m_Walled && AbilityList[5] && !m_Grounded && abilityMovement == 0) // Ability 5,Wall Jump
             {
                 WallJump();
+                Renderer.sprite = Sprites[6];
             }
             if (m_Walled && AbilityList[6]) // Ability 6, Wall Climb
             {
                 WallClimb();
+                Renderer.sprite = Sprites[7];
             }
             if (currentAbility == 7) // Ability 7, heavy
             {
                 m_Rigidbody2D.gravityScale = 4;
+                Renderer.sprite = Sprites[8];
             }
             else if (currentAbility != 7 && currentAbility != 3)//return to regular weight
             {
@@ -244,6 +258,7 @@ namespace UnityStandardAssets._2D
             {
                 m_Rigidbody2D.gravityScale = 1;
                 m_Rigidbody2D.drag = 5;
+                Renderer.sprite = Sprites[4];
             }
             /*else if (currentAbility != 3)//return to regular weight
             {
@@ -311,14 +326,14 @@ namespace UnityStandardAssets._2D
 }
 
 /*
- * 0 Double Jump
- * 1 Dash Forward
- * 2 Blink
- * 3 Float
- * 4 Bounce
- * 5 Wall Jump
- * 6 Wall Climb
- * 7 Heavy
+ * 0 Double Jump -- Sprite[1]:
+ * 1 Dash Forward -- Sprite[2]:
+ * 2 Blink -- Sprite[3]:
+ * 3 Float -- Sprite[4]:
+ * 4 Bounce -- Sprite[5]:
+ * 5 Wall Jump -- Sprite[6]:
+ * 6 Wall Climb -- Sprite[7]:
+ * 7 Heavy -- Sprite[8]:
  * 8
  * 9
  * 10
