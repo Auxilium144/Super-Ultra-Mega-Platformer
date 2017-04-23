@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: c4ad67929806b604fa2f2a62c5c5d189
+timeCreated: 1492962570
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Octicity
+  fontNames:
+  - Octicity
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
