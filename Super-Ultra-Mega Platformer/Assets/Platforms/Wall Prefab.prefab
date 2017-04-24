@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4822770756429476}
   - component: {fileID: 212504672175720590}
   - component: {fileID: 61178754190872612}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Stage-Wall1PROTO (3)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4786310536401652}
   - component: {fileID: 212568242666776468}
   - component: {fileID: 61906114805383908}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Stage-WallTop1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4428957447763012}
   - component: {fileID: 212990081797229846}
   - component: {fileID: 61430198685776296}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Stage-Wall1PROTO (5)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4866970386997498}
   - component: {fileID: 212749156423118608}
   - component: {fileID: 61316234554214966}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Stage-Wall1PROTO (1)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4126203978248454}
   - component: {fileID: 212506425333020392}
   - component: {fileID: 61922806375502236}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Stage-Wall1PROTO
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 4657719861596446}
   - component: {fileID: 212237726978028896}
   - component: {fileID: 61630177979870306}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Stage-WallTop1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

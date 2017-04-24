@@ -12,9 +12,11 @@ namespace UnityStandardAssets._2D
         private bool m_Jump;
         private bool[] AbilityList = new bool[]{ false, false, false, false, false, false, false, false, false, false }; //10 list of ability and if they are enabled, all false unless called
         private bool[] m_Ability = new bool[] { false, false, false, false }; // input controls and sets up current ability usage asdw
-        private int[] equippedAbility = new int[] { 0, 4, 5, 2, 100}; //4 currently equipped abilities in order of asdw EX: 1, 4, 5, 6,
+        private int[] equippedAbility = new int[] { 0, 5, 3, 2, 100}; //4 currently equipped abilities in order of asdw EX: 1, 4, 5, 6,
         private int currentAbility = 0; //currently equipped and allowed to be excuted
         private int pressedKey;
+        private bool EnabledSwitch = true;
+        private bool EnabledUse = true;
         //private string[] inputList = ;
         public void setEquippedAbility(int[] list)//sets equipped abilities
         {
@@ -32,7 +34,28 @@ namespace UnityStandardAssets._2D
 			
 			
         }
-
+        void OnTriggerEnter2D(Collider2D otherObject)
+        {
+            if (otherObject.gameObject.tag == "NullField")
+            {
+                EnabledSwitch = false;
+            }
+            if(otherObject.gameObject.tag == "AbilityNegator")
+            {
+                EnabledUse = false;
+            }
+        }
+        void OnTriggerExit2D(Collider2D otherObject)
+        {
+            if (otherObject.gameObject.tag == "NullField")
+            {
+                EnabledSwitch = true;
+            }
+            if (otherObject.gameObject.tag == "AbilityNegator")
+            {
+                EnabledUse = true;
+            }
+        }
         private void setOther(int x)
         {
             //Set other abilites to zero
@@ -105,7 +128,7 @@ namespace UnityStandardAssets._2D
 
             }
             // Changes abilities between eachother
-            if (m_Character.getAbilityEnable() && !(currentAbility == equippedAbility[readinput()])) // Changes Abilities by setting other keys to false and that key to true
+            if (m_Character.getAbilityEnable() && !(currentAbility == equippedAbility[readinput()]) && EnabledSwitch) // Changes Abilities by setting other keys to false and that key to true
             {
                 //Debug.Log("current " + currentAbility);
                 pressedKey = readinput();
@@ -132,25 +155,25 @@ namespace UnityStandardAssets._2D
                 }
 
             }
-            else if (CrossPlatformInputManager.GetButtonDown("Ability0") && currentAbility == equippedAbility[0]) //flags Ability 0
+            else if (CrossPlatformInputManager.GetButtonDown("Ability0") && currentAbility == equippedAbility[0] && EnabledUse) //flags Ability 0
             {
                 //m_doubleJump = CrossPlatformInputManager.GetButtonDown("Ability1");
                 AbilityList[equippedAbility[0]] = true; //ex: asks m_character to perform ability 1
                 setFalseList(equippedAbility[0]);
             }
-            else if (CrossPlatformInputManager.GetButtonDown("Ability1") && currentAbility == equippedAbility[1]) //flags Ability 1
+            else if (CrossPlatformInputManager.GetButtonDown("Ability1") && currentAbility == equippedAbility[1] && EnabledUse) //flags Ability 1
             {
 
                 AbilityList[equippedAbility[1]] = true; //ex: asks m_character to perform ability 4
                 setFalseList(equippedAbility[1]);
             }
-            else if (CrossPlatformInputManager.GetButtonDown("Ability2") && currentAbility == equippedAbility[2]) //flags Ability 2
+            else if (CrossPlatformInputManager.GetButtonDown("Ability2") && currentAbility == equippedAbility[2] && EnabledUse) //flags Ability 2
             {
 
                 AbilityList[equippedAbility[2]] = true;//ex: asks m_character to perform ability 5
                 setFalseList(equippedAbility[2]);
             }
-            else if (CrossPlatformInputManager.GetButtonDown("Ability3") && currentAbility == equippedAbility[3]) //flags Ability 3
+            else if (CrossPlatformInputManager.GetButtonDown("Ability3") && currentAbility == equippedAbility[3] && EnabledUse) //flags Ability 3
             {
                 AbilityList[equippedAbility[3]] = true;//ex: //asks m_character to perform ability 6
                 setFalseList(equippedAbility[3]);
