@@ -20,16 +20,30 @@ public class Hud : MonoBehaviour {
 	
 	void Start () {
 		getAbilityList();
-		int count = 0;
+		//int count = 0;
+		int i = 0;
+		while(abilityList[i] != -1 && i <= 3) {
+			keyAbilities[i] = abilityNames[abilityList[i]];
+			i++;
+		}
+		/*
 		foreach(int i in abilityList) {
 			keyAbilities[count] = abilityNames[abilityList[count]];
 			count += 1;
 		}
-
-		abilityW.text = keyAbilities[3];
-		abilityA.text = keyAbilities[0];
-		abilityS.text = keyAbilities[1];
-		abilityD.text = keyAbilities[2];
+		*/
+		if(abilityList[0] != -1) {
+			abilityA.text = keyAbilities[0];
+		}
+		if(abilityList[1] != -1) {
+			abilityS.text = keyAbilities[1];
+		}
+		if(abilityList[2] != -1) {
+			abilityD.text = keyAbilities[2];
+		}
+		if(abilityList[3] != -1) {
+			abilityW.text = keyAbilities[3];
+		}
 		oldColor = abilityA.color;
 	}
 	
@@ -77,10 +91,11 @@ public class Hud : MonoBehaviour {
 	{
 		string path = Directory.GetCurrentDirectory();
 		string[] lines = System.IO.File.ReadAllLines(path + "abilities.txt");
-		for (int i = 0; i <= 3 && i < lines.Length; i++) 
+		
+		for (int i = 0; i <= 3 && (lines[i] != ""); i++) 
 		{
-			abilityList[i] = (int) Int32.Parse(lines[i]);
-			Debug.Log("Stuff" + lines[i]);
+				abilityList[i] = (int) Int32.Parse(lines[i]);
+				Debug.Log("Stuff" + lines[i]);
 		}
 		
 	}
