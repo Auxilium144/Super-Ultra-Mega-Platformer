@@ -22,7 +22,10 @@ public class Hud : MonoBehaviour {
 		getAbilityList();
 		//int count = 0;
 		int i = 0;
-		while(abilityList[i] != -1 && i <= 3) {
+		while(i <= 3 && abilityList[i] != -1) {
+			Debug.Log("--------------");
+			Debug.Log("abilitylist[i] =" + abilityList[i]);
+			Debug.Log("abilityNames[abilityList[i]] =" + abilityNames[abilityList[i]]);
 			keyAbilities[i] = abilityNames[abilityList[i]];
 			i++;
 		}
