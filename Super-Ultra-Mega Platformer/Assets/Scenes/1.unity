@@ -776,11 +776,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4659686355868892, guid: 3116bbe0d4111e64f9d9255233c04eb5, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3.93
+      value: 5.01
       objectReference: {fileID: 0}
     - target: {fileID: 4659686355868892, guid: 3116bbe0d4111e64f9d9255233c04eb5, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.82
+      value: 1.74
       objectReference: {fileID: 0}
     - target: {fileID: 4659686355868892, guid: 3116bbe0d4111e64f9d9255233c04eb5, type: 2}
       propertyPath: m_LocalPosition.z
@@ -808,6 +808,66 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3116bbe0d4111e64f9d9255233c04eb5, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1203688863
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4302740481617580, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302740481617580, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 8.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302740481617580, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302740481617580, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302740481617580, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302740481617580, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302740481617580, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302740481617580, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302740481617580, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114549342004602890, guid: ca870c743f373e44584b078dc8a28a76,
+        type: 2}
+      propertyPath: direction
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1203883877375286, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
+      propertyPath: m_Name
+      value: LazarFiringGuny 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114549342004602890, guid: ca870c743f373e44584b078dc8a28a76,
+        type: 2}
+      propertyPath: distance
+      value: 15
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1212926613
 Prefab:
@@ -1010,11 +1070,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4019208071233922, guid: 693101b181f6b9c489a52a6f3ee7a2d6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.3144677
+      value: -4.98
       objectReference: {fileID: 0}
     - target: {fileID: 4019208071233922, guid: 693101b181f6b9c489a52a6f3ee7a2d6, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.0168939
+      value: 2.39
       objectReference: {fileID: 0}
     - target: {fileID: 4019208071233922, guid: 693101b181f6b9c489a52a6f3ee7a2d6, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1244,7 +1304,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 14.866408
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1296,11 +1356,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4302740481617580, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.44
+      value: -0.48
       objectReference: {fileID: 0}
     - target: {fileID: 4302740481617580, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.64
+      value: 8.64
       objectReference: {fileID: 0}
     - target: {fileID: 4302740481617580, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1333,7 +1393,7 @@ Prefab:
     - target: {fileID: 114549342004602890, guid: ca870c743f373e44584b078dc8a28a76,
         type: 2}
       propertyPath: direction
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
@@ -1558,4 +1618,59 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ba0515790b8c20b428b3b9718ac3bf9f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &2146822682
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4302740481617580, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302740481617580, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 8.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302740481617580, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302740481617580, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302740481617580, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302740481617580, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302740481617580, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302740481617580, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302740481617580, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114549342004602890, guid: ca870c743f373e44584b078dc8a28a76,
+        type: 2}
+      propertyPath: direction
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1203883877375286, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
+      propertyPath: m_Name
+      value: LazarFiringGuny 1 (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ca870c743f373e44584b078dc8a28a76, type: 2}
   m_IsPrefabParent: 0

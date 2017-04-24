@@ -48,11 +48,11 @@ public class MovingLazer : MonoBehaviour
             }
             else if (direction < 0)
             {
-                if (originx - transform.position.y < distance)//going down y(10) - less number
+                if (originy - transform.position.y < distance)//going down y(10) - less number
                 {
                     useSpeed = -directionSpeed; //go
                 }
-                else if (originx - transform.position.y > distance)
+                else if (originy - transform.position.y > distance)
                 {
                     transform.position = new Vector2(originx, originy); //return home
                     timer = timerMax;//respawn time
