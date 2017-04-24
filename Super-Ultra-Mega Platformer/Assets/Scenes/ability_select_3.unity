@@ -1606,6 +1606,7 @@ MonoBehaviour:
   ability5: {fileID: 0}
   ability6: {fileID: 0}
   ability7: {fileID: 0}
+  ability8: {fileID: 0}
   enterStage: {fileID: 0}
   back: {fileID: 0}
   flushAbilities: {fileID: 0}
@@ -1777,6 +1778,7 @@ MonoBehaviour:
   ability5: {fileID: 926790085}
   ability6: {fileID: 577486383}
   ability7: {fileID: 1899422381}
+  ability8: {fileID: 316803590}
   enterStage: {fileID: 94832417}
   back: {fileID: 272674928}
   flushAbilities: {fileID: 535403769}

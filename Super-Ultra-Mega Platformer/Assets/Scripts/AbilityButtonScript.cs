@@ -17,6 +17,7 @@ namespace UnityStandardAssets._2D
         public Button ability5;
         public Button ability6;
         public Button ability7;
+		public Button ability8;
 		public Button enterStage;
 		public Button back;
 		public Button flushAbilities;
@@ -53,7 +54,7 @@ namespace UnityStandardAssets._2D
 			ability5.enabled = true;
 			ability6.enabled = true;
 			ability7.enabled = true;
-			
+			ability8.enabled = true;
 			
 		}
 
@@ -102,7 +103,7 @@ namespace UnityStandardAssets._2D
 		public void ability8Press()
 		{
 			 abilityHandler("7");
-            ability7.enabled = false;
+            ability8.enabled = false;
 		}
 
         private void abilityHandler(string ability)
