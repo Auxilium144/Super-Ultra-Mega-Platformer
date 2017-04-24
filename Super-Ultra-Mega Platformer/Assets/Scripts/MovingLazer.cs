@@ -21,11 +21,11 @@ public class MovingLazer : MonoBehaviour
             originx = transform.position.x;
         if (direction > 0)
         {
-            useSpeed = -directionSpeed;
+            useSpeed = directionSpeed;
         }
         else
         {
-            useSpeed = directionSpeed;
+            useSpeed = -directionSpeed;
         }
     }
 
@@ -34,30 +34,31 @@ public class MovingLazer : MonoBehaviour
     {
         if (axis == 'y')
         {
-            if (direction < 0)//if going up
+            if (direction > 0)//if going up = 1
             {
-                if (originy - transform.position.y < distance)//going up!
+                if (originy - transform.position.y > -distance)//going up origin y(10) - positive number(
                 {
-                    useSpeed = -directionSpeed; //go
+                    useSpeed = directionSpeed; //go
                 }
-                else if (originy - transform.position.y > -distance)
+                else if (originy - transform.position.y < -distance)
                 {
                     transform.position = new Vector2(originx, originy); //return home
                     timer = timerMax;//respawn time
                 }              
             }
-            else if (direction > 0)
+            else if (direction < 0)
             {
-                if (originx - transform.position.y > distance)//going down
+                if (originx - transform.position.y < distance)//going down y(10) - less number
                 {
-                    useSpeed = directionSpeed; //go
+                    useSpeed = -directionSpeed; //go
                 }
-                else if (originx - transform.position.y < -distance)
+                else if (originx - transform.position.y > distance)
                 {
                     transform.position = new Vector2(originx, originy); //return home
                     timer = timerMax;//respawn time
                 }
             }
+
             if (timer < 1)
             {
                 transform.Translate(0, useSpeed * Time.deltaTime, 0);// go
@@ -71,11 +72,11 @@ public class MovingLazer : MonoBehaviour
         {
             if (direction > 0)//if going left
             {
-                if (originx - transform.position.x < distance)
+                if (originx - transform.position.x < distance)// x(10) - less than
                 {
-                    useSpeed = -directionSpeed; //flip direction
+                    useSpeed = -directionSpeed; //go
                 }
-                else if (originx - transform.position.x > -distance)
+                else if (originx - transform.position.x > distance)
                 {
                     transform.position = new Vector2(originx, originy); //return home
                     timer = timerMax;//repsawn time
@@ -83,7 +84,7 @@ public class MovingLazer : MonoBehaviour
             }
             else if (direction < 0)//if going right
             {
-                if (originx - transform.position.x > distance)//move right until distance
+                if (originx - transform.position.x > -distance)//move right until distance x(10) - more than 
                 {
                     useSpeed = directionSpeed; //go
                 }
